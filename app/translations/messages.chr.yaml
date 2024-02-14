@@ -1,0 +1,19 @@
+telegram:
+  confirm:
+    out_of_date: "❌ Хьун йина предложение х1инц йоцаш ю."
+    confirm: "Хьалха объявленин т1е вазвеллер хьо \"*%title%*\"\r\n\r\nИ чу кхоьснаг хьоьцане хица реза ву."
+  cancel: 'Отмена'
+
+site:
+  account:
+    nickname: Ник
+    nickname_label_html: Ник <small>(ТГ чохь ма хиллара хила йеза)</small>
+    first_name: Ц1е
+    last_name: Фамили
+    phone: Телепон
+    email: E-mail
+    my_account: Соьх лаьцна
+  last_update: Т|аьхьа хийцамаш
+  advertisement: Хийцар
+  news: Керла
+  main: Хьалха аг|о

@@ -1,0 +1,41 @@
+{% set banners = banners.page.card ?? null %}
+
+{% if banners is not null %}
+
+    {% set itemClass = 'col-xl-6 col-lg-6 col-md-6 col-sm-6' %}
+    {% set containerClass = 'container' %}
+
+    {% if banners|length > 2 %}
+        {% set itemClass = 'col-xl-4 col-lg-4 col-md-4 col-sm-12' %}
+        {% set containerClass = 'container-fluid' %}
+    {% endif %}
+
+    <div class="product-collection-area product-collection-area-2 product-collection-area-3 product-collection-area-5  pb-50">
+        <div class="{{ containerClass }}">
+            <div class="row">
+
+                {% for banner in banners %}
+                    <div class="{{ itemClass }} mb-4">
+                        <div class="collection-wrapper first-collection pl-100 pt-75 " style="background-image: url({{ asset(banner.image) }})">
+                            {% if banner.subTitle is not empty %}
+                                <span>{{ banner.subTitle }}</span>
+                            {% endif %}
+
+                            {% if banner.title is not empty %}
+                                <p>{{ banner.title }}</p>
+                            {% endif %}
+
+                            {% if banner.buttonName is not empty %}
+                                <a href="{{ banner.buttonLink }}">
+                                    {{ banner.buttonName}} <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+{% endif %}

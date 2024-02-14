@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block body %}
+
+    <div class="login-page-area pt-50">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-9">
+                    <div class="login-detalis pt-40 pr-40 pl-40 pb-40">
+                        {{
+                            render(controller('App\\Controller\\TelegramLoginController::widget', {
+                                telegramBotName: telegram_bot_name
+                            }))
+                        }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

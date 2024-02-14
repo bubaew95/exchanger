@@ -1,0 +1,40 @@
+{% set banners = banners.page.slider ?? null %}
+
+{% if banners is defined %}
+
+    <div class="slider-area slider-area-5  owl-carousel position-relative">
+
+        {% for banner in banners %}
+            <div class="single-slide pb-45" style="background-image: url({{ banner.image }});">
+                <div class="slider-content slider-height pt-60">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-7 col-md-9 col-sm-9 col-12 offset-xl-0 offset-lg-1 offset-md-1 offset-sm-1">
+                                <div class="hero-text pt-120">
+                                    {% if banner.title is not empty %}
+                                        <h1 class="pr-130 pb-10">
+                                            {{ banner.title }}
+                                        </h1>
+                                    {% endif %}
+
+                                    {% if banner.text is not empty %}
+                                        <p>{{ banner.text }}</p>
+                                    {% endif %}
+
+                                    {% if banner.buttonName is not empty %}
+                                        <a href="{{ banner.buttonLink }}"><i class="fa fa-plus" aria-hidden="true"></i>
+                                            {{ banner.buttonName }}
+                                        </a>
+                                    {% endif %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endif %}

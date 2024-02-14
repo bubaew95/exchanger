@@ -1,0 +1,22 @@
+telegram:
+  confirm:
+    out_of_date: "❌ Данное предложение уже не актуально."
+    confirm: "Вы ранее откликались на объявление \"*%title%*\"\r\n\r\nВладелец объявления согласен обменяться с Вами.\r\n\r\nВаше предложение все еще в силе?"
+  cancel: 'Отмена'
+  confirmExchange: "Объявление:\r\n*%title%*\r\n\r\nНомер телефона для связи с владельцем: [%phone%](tel:%phone%)"
+
+
+site:
+  account:
+    nickname: Имя пользователя
+    nickname_label_html: Имя пользователя <small>(Должен соответствовать имени пользователя из ТГ)</small>
+    first_name: Имя
+    last_name: Фамилия
+    phone: Телефон
+    email: E-mail
+    my_account: Мой аккаунт
+
+  last_update: Последние объявления
+  advertisement: Обменник
+  news: Новости
+  main: Главная страница

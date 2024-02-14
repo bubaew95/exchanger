@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{%
+    set breadcrumbs = [
+        {'title' : meta.seo_title ?? page.title}
+    ]
+%}
+
+{% block body %}
+
+    <div class="about-area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    {{ page.text|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

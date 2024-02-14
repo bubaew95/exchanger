@@ -1,0 +1,11 @@
+<div class="container mt-4">
+
+    {% for key, flash in app.flashes %}
+        {% for message in flash %}
+            <div class="alert alert-{{ key }}" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+</div>

@@ -1,0 +1,23 @@
+{% set banners = banners.page.full_banner ?? null %}
+
+{% if banners is not null %}
+    <div class="man-collection-area mt-3">
+        <div class="container">
+            <div class="man-collection-active">
+
+                {% for banner in banners %}
+                    <div class="full-banner-item collection-area pt-50 pb-35" style="background-image: url('{{ asset(banner.image) }}');">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-5 col-md-7 col-sm-10 col-10 offset-xl-6 offset-lg-4 offset-md-1">
+                                <a href="{{ banner.buttonLink }}">
+                                    {{ banner.title }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endif %}

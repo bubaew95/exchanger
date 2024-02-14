@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ meta.seo_title ?? 'site.advertisement'|trans }}{% endblock %}
+
+{%
+    set breadcrumbs = [
+        {'title' : block('title')}
+    ]
+%}
+
+{% block body %}
+
+    <div class="product-area product-area-3 pt-45 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section-title">
+                        <h3>
+                            Объявления
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container pl-0 pr-0">
+            <div class="custom-row row">
+                {% for item in pagination %}
+                    {{ include ('components/advertising-item.html.twig') }}
+                {% endfor %}
+
+                {{ include ('components/pagination.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{%
+    set breadcrumbs = [
+        {title: 'Объявления', link: path('app_advertisement')},
+        {'title' : meta.seo_title ?? details.name}
+    ]
+%}
+
+{% block title %}{{ details.name }}{% endblock %}
+{% block description %}{{ details.name }}{% endblock %}
+
+{% block body %}
+
+    <div class="product-area product-shop-page  product-list-page product-detalis-page mt-50">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-xl-5 col-lg-7 col-md-6 col-sm-12">
+                    <div class="product-list-slider">
+                        {% for item in details.images %}
+                            <div class="product-img">
+                                <img src="{{ asset(item.image) }}" alt="">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class=" slider-nav-thumbnails product-list-active">
+                        {% for item in details.images %}
+                            <a {% if item.base %}class="active"{% endif %}>
+                                <img src="{{ asset(item.image) }}" alt="">
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-5 col-md-6 col-sm-12">
+                    <div class="product-wrapper product-wrapper-2">
+                        <div class="product-detalis">
+{#                            {{ include('advertisement/components/seller.html.twig') }}#}
+
+                            <div class="product-interested pb-20">
+                                <b>Обмен на:</b>
+                                {{ details.exchangeForWhat }}
+                            </div>
+
+                            <div class="product-interested">
+                                <b>Описание:</b> {{ details.text }}
+                            </div>
+
+                            {% if details.price %}
+                                <div class="price d-inline-block pt-25">
+                                    Цена: <span>{{ details.price|price }}</span>
+                                </div>
+                            {% endif %}
+
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                {% if details.user.id != app.user.id %}
+                                    {% if app.user is not null and  app.user.phone is null %}
+                                        <p class="rounded-3px bg-danger text-white p-3 my-5">
+                                            Чтобы у вас была возможность откликнуться на объявления, Вам необходимо заполнить
+                                            номер телефона и имя пользователя в <a href="{{ path('app_account') }}" class="text-bold text-dark">аккаунте</a>
+                                        </p>
+                                    {% else %}
+                                        <div class="cart-view my-5">
+                                            <div {{ react_component('ProposeExchange', {advertisementId: details.id}) }}>
+                                                Загрузка ... <i class="fas fa-cog fa-spin fa-2x"></i>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% else %}
+                                    <p class="text-center pt-2">
+                                        Вы являетесь владельцем данного объявления.
+                                    </p>
+                                {% endif %}
+
+                            {% else %}
+                                <div class="rounded-3px bg-danger text-white p-3 my-5">Чтобы предложить обмен нужно авторизоваться</div>
+                            {% endif %}
+
+                            {% if offers is not empty %}
+                                {{ include('advertisement/components/proposed.html.twig') }}
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ render(controller('App\\Controller\\AdvertisementController::randAdvertisements')) }}
+
+{% endblock %}

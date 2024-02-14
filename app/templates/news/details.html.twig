@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ meta.title ?? news.title }}{% endblock %}
+
+{%
+    set breadcrumbs = [
+        {title: 'Новости', link: path('app_news')},
+        {'title' : meta.seo_title ?? news.title}
+    ]
+%}
+
+{% block body %}
+
+    <div class="blog-detalis-page comment-area product-detalis-page pt-20">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="blog-text news-info mb-20">
+                        {{ news.text|raw }}
+                    </div>
+                    <hr>
+
+                    {# SHARE #}
+                    {# COMMENTS #}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

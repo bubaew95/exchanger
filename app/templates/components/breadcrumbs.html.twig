@@ -1,0 +1,42 @@
+
+{% macro render(items, title) %}
+    <hr class="pt-10">
+
+    <div class="page-title-area pt-30 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page-titel-detalis  ">
+                        <div class="page-title position-relative">
+                            <h2>{{ title ?? ''}}</h2>
+                        </div>
+                        <div class="page-bc">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="{{ path('app_index') }}">
+                                            <i class="fas fa-home "></i>Главная
+                                        </a>
+                                    </li>
+                                    {% for item in items %}
+                                        {% if item.link is defined %}
+                                            <li class="breadcrumb-item active" aria-current="page">
+                                                <a href="{{ item.link }}">{{ item.title }}</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="breadcrumb-item" aria-current="page">
+                                                {{ item.title }}
+                                            </li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="pt-10">
+{% endmacro %}

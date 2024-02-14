@@ -1,0 +1,31 @@
+<div class="mt-10">
+    <div class="my-2">Предложения по обмену:</div>
+
+    <div class="cart-table table-responsive ">
+        <table class="table table-bordered text-center">
+
+            <tbody>
+                {% for offer in offers %}
+                    {% set advertisement = offer.proposedAdvertisement %}
+                    {% set image = advertisement.images[0].image ?? 'img/noimage.png' %}
+
+                    <tr>
+                        <td>
+                            <div class="cart-img">
+                                <img src="{{ asset(image) }}" class="image-crop" alt="{{ advertisement.name }}">
+                            </div>
+                        </td>
+                        <td class="td-width">
+                            <div class="cart-description text-left pl-20">
+                                <a href="{{ path('app_advertisement_details', {slug: advertisement.slug}) }}">
+                                    {{ advertisement.name }}
+                                </a>
+                                <p>{{ advertisement.seoDescription }}</p>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

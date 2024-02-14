@@ -1,0 +1,98 @@
+<header>
+    <div class="header-area header-3 header-5 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="header-top">
+                        <div class="header-top-left d-inline-block pb-10 pb-sm-0">
+                            <ul class="user-info d-flex pt-15">
+                                <li><a href="{{ path('app_account') }}">{% trans %}site.account.my_account{% endtrans %}</a></li>
+                            </ul>
+                        </div>
+                        <div class="header-top-right float-right pt-15 d-flex justify-content-end">
+                            <ul class="language d-flex ">
+                                <li>
+                                    <a href="/chr" class="{% if lang == 'chr' %}lang-active{% endif %}">
+                                        <img src="{{ asset('img/icon/noxchi.png') }}" alt=""> Нохчи
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/" class="{% if lang == 'ru' %}lang-active{% endif %}">
+                                        <img src="{{ asset('img/icon/russia.png') }}" alt=""> Русский
+                                    </a>
+                                </li>
+                            </ul>
+{#                            <ul class="mony">#}
+{#                                <li><a href="#"><i class="fas fa-dollar-sign"></i> USD</a>#}
+{#                                    <ul class="sub-mony">#}
+{#                                        <li><a href="#"><i class="fas fa-euro-sign"></i>ERO</a></li>#}
+{#                                        <li><a href="#"><i class="fas fa-yen-sign"></i>CNY</a></li> #}
+{#                                    </ul>#}
+{#                                </li>#}
+{#                            </ul>#}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr class="pt-10">
+            <div class="header-menu mt-15 pt-5 pb-25">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-2 col-md-2 col-sm-3 col-5 order-sm-1 offset-xl-0 offset-lg-0 offset-md-4 offset-sm-4 ">
+                        <div class="logo text-center text-lg-left">
+                            <a href="{{ path('app_index') }}" class="logo">
+                                <span>H</span>ica
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-8  order-2 d-none d-lg-block">
+                        <div class="main-menu pt-5">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('app_index') }}">Главная</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('app_advertisement') }}">Обменник</a>
+                                    </li>
+                                    <li><a href="{{ path('app_news') }}">Новости</a></li>
+                                    <li><a href="{{ path('page', {page: 'contacts'}) }}">Контакты</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-2 col-md-6 col-sm-4 col-7 order-sm-3">
+                        <div class="d-flex justify-content-end">
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <div class="user-auth-block">
+                                    <div class="user-auth-info">
+                                        {% if app.user.photoUrl is not empty %}
+                                            <img src="{{ app.user.photoUrl }}" class="rounded-circle w-35">
+                                        {% endif %}
+                                        <span class="font-weight-bold link-opacity-100">{{ app.user.username }}</span>
+                                    </div>
+
+                                    <ul class="user-auth-sub-menu">
+                                        <li><a href="{{ path('app_account') }}">Аккаунт</a></li>
+                                        <li><a href="{{ path('app_my_advertisements') }}">Мои объявления</a></li>
+                                        <li><a href="blog-detalis-page.html">Настройки</a></li>
+                                        <li><a href="blog-left-sidebar-page.html">Уведомления <span class="badge">21</span></a></li>
+                                        <li><a href="{{ path('app_logout') }}">Выход</a></li>
+                                    </ul>
+                                </div>
+                            {% else %}
+                                {{
+                                    render(controller('App\\Controller\\TelegramLoginController::widget', {
+                                        telegramBotName: telegram_bot_name
+                                    }))
+                                }}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="mobile-menu"></div>
+        </div>
+    </div>
+</header>

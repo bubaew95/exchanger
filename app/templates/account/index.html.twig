@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Аккаунт{% endblock %}
+
+{% block body %}
+
+    <div class="login-page-area pt-50">
+        <div class="container">
+            <div class="pt-40 pr-40 pl-40 pb-40">
+                <div class="text-center mb-5">
+                    <img src="{{ field_value(form.photoUrl) }}" class="rounded-circle w-25">
+                </div>
+
+                {{ form_start(form, {attr: { class: 'login-input' }}) }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.username) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_row(form.first_name) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_row(form.last_name) }}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form_row(form.phone) }}
+                            </div>
+                            <div class="form-group">
+                                {{ form_row(form.email) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-none">
+                        {{ form_row(form.photoUrl) }}
+                    </div>
+
+                    <div class="text-center pt-30">
+                        <button class="primary-button-v2">Сохранить</button>
+                    </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

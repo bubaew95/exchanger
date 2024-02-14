@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ meta.seo_title ?? 'site.main'|trans }}{% endblock %}
+
+{% block body %}
+
+    {{ include('index/components/_slider.html.twig') }}
+
+    <div class="product-area product-area-3 pt-45 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="section-title">
+                        <h3>{% trans %}site.last_update{% endtrans %}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pl-0 pr-0">
+            <div class="custom-row row">
+                {% for item in lastAdvertisements %}
+                    {{ include ('components/advertising-item.html.twig') }}
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+    {{ include('components/_banner.html.twig') }}
+
+    <div class="subscribe-area pt-50 pb-35 mb-55">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 col-12 offset-xl-3 offset-lg-2 offset-md-1">
+                    <div class="mess-icon text-center pb-30">
+                        <img src="https://html.themexplosion.com/moly/assets/img/icon/email-red.png" alt="messages">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12 col-12 offset-xl-3 offset-lg-2 offset-md-1">
+                    <form action="#">
+                        <input type="email" placeholder="Enter Your Email...">
+                        <button>Subscribe</button>
+                    </form>
+                    <div class="discount-text text-center pt-50">
+                        <p>Get Discount 30% Off !</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5"></div>
+
+    <div class="brand-area pb-10 ">
+        <div class="container">
+            <div class="brand-active">
+                <div class="single-brand">
+                    <div class="brand-img">
+                        <img src="https://html.themexplosion.com/moly/assets/img/brand/brand1.png" alt="brand">
+                    </div>
+                </div>
+                <div class="single-brand">
+                    <div class="brand-img">
+                        <img src="https://html.themexplosion.com/moly/assets/img/brand/brand2.png" alt="brand">
+                    </div>
+                </div>
+                <div class="single-brand">
+                    <div class="brand-img">
+                        <img src="https://html.themexplosion.com/moly/assets/img/brand/brand3.png" alt="brand">
+                    </div>
+                </div>
+                <div class="single-brand">
+                    <div class="brand-img">
+                        <img src="https://html.themexplosion.com/moly/assets/img/brand/brand4.png" alt="brand">
+                    </div>
+                </div>
+                <div class="single-brand">
+                    <div class="brand-img">
+                        <img src="https://html.themexplosion.com/moly/assets/img/brand/brand1.png" alt="brand">
+                    </div>
+                </div>
+                <div class="single-brand">
+                    <div class="brand-img">
+                        <img src="https://html.themexplosion.com/moly/assets/img/brand/brand2.png" alt="brand">
+                    </div>
+                </div>
+                <div class="single-brand">
+                    <div class="brand-img">
+                        <img src="https://html.themexplosion.com/moly/assets/img/brand/brand3.png" alt="brand">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {{ include('index/components/_last-news.html.twig') }}
+
+{% endblock %}

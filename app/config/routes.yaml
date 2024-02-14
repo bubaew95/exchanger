@@ -1,0 +1,14 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+    prefix:
+        ru: ''
+        chr: '/chr'
+
+page:
+    path: /{page}
+    controller: App\Controller\PageController::page
+    requirements:
+        page: '[a-z-]+'
